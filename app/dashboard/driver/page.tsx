@@ -31,7 +31,7 @@ export default function DriverDashboard() {
       pickupLocation: "123 Main Street, Downtown",
       dropoffLocation: "456 Park Avenue, Uptown",
       distance: "4.2 km",
-      estimatedFare: "$8.50",
+      estimatedFare: "€8.50",
       pickupTime: "In 2 minutes",
       passengers: 1,
       rating: 4.8,
@@ -42,7 +42,7 @@ export default function DriverDashboard() {
       pickupLocation: "Central Station",
       dropoffLocation: "Airport Terminal B",
       distance: "18 km",
-      estimatedFare: "$28.90",
+      estimatedFare: "€28.90",
       pickupTime: "In 5 minutes",
       passengers: 2,
     },
@@ -79,16 +79,16 @@ export default function DriverDashboard() {
   }
 
   const stats = [
-    { label: "Today Earnings", value: "$156.80", icon: DollarSign, color: "text-secondary" },
+    { label: "Today Earnings", value: "€156.80", icon: DollarSign, color: "text-secondary" },
     { label: "Rides Today", value: "12", icon: MapPin, color: "text-primary" },
     { label: "Rating", value: "4.9★", icon: Star, color: "text-accent" },
     { label: "Acceptance Rate", value: "98%", icon: TrendingUp, color: "text-primary" },
   ]
 
   const completedRides = [
-    { id: 1, passenger: "Sarah Williams", distance: "5.2 km", fare: "$10.40", rating: 5, time: "2:30 PM" },
-    { id: 2, passenger: "David Brown", distance: "3.8 km", fare: "$7.60", rating: 4.8, time: "1:15 PM" },
-    { id: 3, passenger: "Lisa Martinez", distance: "12 km", fare: "$22.50", rating: 5, time: "10:45 AM" },
+    { id: 1, passenger: "Sarah Williams", distance: "5.2 km", fare: "€10.40", rating: 5, time: "2:30 PM" },
+    { id: 2, passenger: "David Brown", distance: "3.8 km", fare: "€7.60", rating: 4.8, time: "1:15 PM" },
+    { id: 3, passenger: "Lisa Martinez", distance: "12 km", fare: "€22.50", rating: 5, time: "10:45 AM" },
   ]
 
   return (
@@ -110,7 +110,7 @@ export default function DriverDashboard() {
             </div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-muted">
-                <div className={`w-3 h-3 rounded-full ${isOnline ? "bg-green-500" : "bg-red-500"}`}></div>
+                <div className={`w-3 h-3 rounded-full €{isOnline ? "bg-green-500" : "bg-red-500"}`}></div>
                 <span className="text-sm font-semibold text-foreground">{isOnline ? "Online" : "Offline"}</span>
               </div>
               <Button
@@ -153,7 +153,7 @@ export default function DriverDashboard() {
                     <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
                     <p className="text-3xl font-bold text-foreground">{stat.value}</p>
                   </div>
-                  <div className={`w-12 h-12 bg-muted rounded-lg flex items-center justify-center ${stat.color}`}>
+                  <div className={`w-12 h-12 bg-muted rounded-lg flex items-center justify-center €{stat.color}`}>
                     <Icon size={24} />
                   </div>
                 </div>
@@ -322,7 +322,7 @@ export default function DriverDashboard() {
                 </div>
                 <div className="flex justify-between pt-3 border-t border-border">
                   <span className="text-foreground font-semibold">Today Earnings</span>
-                  <span className="font-bold text-secondary text-lg">$156.80</span>
+                  <span className="font-bold text-secondary text-lg">€156.80</span>
                 </div>
               </div>
             </Card>

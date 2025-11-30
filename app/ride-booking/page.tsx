@@ -170,7 +170,7 @@ export default function RideBookingPage() {
                         setShowRideOptions(false)
                         setEstimatedFare(null)
                       }}
-                      className={`p-4 rounded-lg border-2 transition ${
+                      className={`p-4 rounded-lg border-2 transition €{
                         selectedRideType === ride.id
                           ? "border-primary bg-primary/5"
                           : "border-border hover:border-primary/50"
@@ -252,7 +252,7 @@ export default function RideBookingPage() {
                   {/* Fare */}
                   <div className="pt-4 space-y-2">
                     <p className="text-muted-foreground text-sm">Estimated Fare</p>
-                    <p className="text-4xl font-bold text-primary">${estimatedFare}</p>
+                    <p className="text-4xl font-bold text-primary">€{estimatedFare}</p>
                     <p className="text-xs text-muted-foreground">Prices may vary based on demand</p>
                   </div>
                 </div>

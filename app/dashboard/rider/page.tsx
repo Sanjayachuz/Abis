@@ -66,7 +66,7 @@ export default function RiderDashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid md:grid-cols-10 gap-8 mb-10">
+        <div className="grid md:grid-cols-4 gap-4 mb-8">
           <Button className="h-16 text-lg" asChild>
             <Link href="/ride-booking">Book a Ride Now</Link>
           </Button>

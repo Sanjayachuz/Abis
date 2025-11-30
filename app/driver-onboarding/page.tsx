@@ -137,7 +137,7 @@ export default function DriverOnboardingPage() {
             {progressSteps.map((step, index) => (
               <div key={index} className="flex items-center">
                 <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition ${
+                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition €{
                     currentStep > index
                       ? "bg-primary text-primary-foreground"
                       : currentStep === index + 1
@@ -150,7 +150,7 @@ export default function DriverOnboardingPage() {
                 <p className="ml-2 text-sm font-semibold text-foreground hidden sm:block">{step}</p>
                 {index < progressSteps.length - 1 && (
                   <div
-                    className={`h-1 mx-4 transition ${currentStep > index ? "bg-primary" : "bg-muted"}`}
+                    className={`h-1 mx-4 transition €{currentStep > index ? "bg-primary" : "bg-muted"}`}
                     style={{ width: "60px" }}
                   ></div>
                 )}
@@ -189,7 +189,7 @@ export default function DriverOnboardingPage() {
                     </div>
                     <label className="cursor-pointer">
                       <div
-                        className={`px-4 py-2 rounded-lg transition ${
+                        className={`px-4 py-2 rounded-lg transition €{
                           doc.uploaded
                             ? "bg-primary/10 text-primary"
                             : "bg-primary text-primary-foreground hover:bg-primary/90"

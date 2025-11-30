@@ -170,7 +170,7 @@ export default function RideBookingPage() {
                         setShowRideOptions(false)
                         setEstimatedFare(null)
                       }}
-                      className={`p-4 rounded-lg border-2 transition €{
+                      className={`p-4 rounded-lg border-2 transition &{
                         selectedRideType === ride.id
                           ? "border-primary bg-primary/5"
                           : "border-border hover:border-primary/50"

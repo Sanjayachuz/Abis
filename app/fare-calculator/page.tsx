@@ -87,7 +87,7 @@ export default function FareCalculatorPage() {
                   <button
                     key={type.id}
                     onClick={() => setRideType(type.id as any)}
-                    className={`p-3 rounded-lg border-2 transition text-center €{
+                    className={`p-3 rounded-lg border-2 transition text-center &{
                       rideType === type.id ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"
                     }`}
                   >
@@ -109,7 +109,7 @@ export default function FareCalculatorPage() {
                   <button
                     key={time.id}
                     onClick={() => setTimeOfDay(time.id as any)}
-                    className={`p-3 rounded-lg border-2 transition text-center €{
+                    className={`p-3 rounded-lg border-2 transition text-center &{
                       timeOfDay === time.id
                         ? "border-secondary bg-secondary/5"
                         : "border-border hover:border-secondary/50"

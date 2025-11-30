@@ -4,7 +4,7 @@ Abis is a modern, responsive ride-hailing website built with **Next.js**, design
 This project includes a clean UI, location-based features, booking flow, and driver onboarding.
 
 ## 🚀 Live Demo
-👉 https://abis-kappa.vercel.app
+👉 https://abis-malta.vercel.app/
 
 ## 🛠️ Tech Stack
 - **Next.js 14**

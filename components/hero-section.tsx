@@ -1,6 +1,96 @@
+"use client";
+
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { MapPin, Users, TrendingUp } from "lucide-react"
+import { useState, useEffect, useRef } from "react"
+
+// Replace these with your real image paths (public folder or CDN)
+const images = [
+  "/images/car1.png",
+  "/images/car2.png",
+  "/images/driving.jpg",
+  
+]
+
+function SlideCarousel({ intervalMs = 4000, heightClass = "h-96" }) {
+  const [index, setIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const trackRef = useRef(null)
+
+  useEffect(() => {
+    if (isPaused) return
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % images.length)
+    }, intervalMs)
+    return () => clearInterval(id)
+  }, [isPaused, intervalMs])
+
+  const prev = () => setIndex((i) => (i - 1 + images.length) % images.length)
+  const next = () => setIndex((i) => (i + 1) % images.length)
+  const goTo = (i) => setIndex(i)
+
+  return (
+    <div
+      className="hidden md:block"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div className={`relative ${heightClass} rounded-3xl overflow-hidden`}>
+        {/* sliding track */}
+        <div
+          ref={trackRef}
+          className="absolute inset-0 flex transition-transform duration-700 ease-in-out will-change-transform"
+          style={{ transform: `translateX(-${index * 100}%)` }}
+        >
+          {images.map((src, i) => (
+            <div key={i} className="w-full flex-shrink-0 relative">
+              <img
+                src={src}
+                alt={`slide-${i}`}
+                className="w-full h-full object-cover"
+                draggable={false}
+              />
+
+              {/* Optional overlay & caption area (customize if you want text) */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/30 pointer-events-none"></div>
+            </div>
+          ))}
+        </div>
+
+        {/* Prev / Next buttons */}
+        <button
+          onClick={prev}
+          aria-label="Previous"
+          className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/40 text-white rounded-full p-2 backdrop-blur-sm"
+        >
+          ‹
+        </button>
+        <button
+          onClick={next}
+          aria-label="Next"
+          className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/40 text-white rounded-full p-2 backdrop-blur-sm"
+        >
+          ›
+        </button>
+
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                i === index ? "scale-110 bg-white" : "bg-white/50"
+              }`}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function HeroSection() {
   return (
@@ -59,18 +149,8 @@ export function HeroSection() {
             </div>
           </div>
 
-          {/* Right Visual */}
-          <div className="hidden md:block">
-            <div className="relative h-96 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-64 h-64 bg-primary/10 rounded-full blur-3xl absolute"></div>
-                <div className="relative z-10 text-center">
-                  <div className="text-6xl mb-4">🚗</div>
-                  <p className="text-foreground font-semibold">Reliable Rides</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Right Visual - replaced with sliding carousel */}
+          <SlideCarousel intervalMs={4000} heightClass="h-96" />
         </div>
       </div>
     </section>

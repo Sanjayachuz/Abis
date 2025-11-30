@@ -109,7 +109,7 @@ export default function FareCalculatorPage() {
                   <button
                     key={time.id}
                     onClick={() => setTimeOfDay(time.id as any)}
-                    className={`p-3 rounded-lg border-2 transition text-center ${
+                    className={`p-3 rounded-lg border-2 transition text-center €{
                       timeOfDay === time.id
                         ? "border-secondary bg-secondary/5"
                         : "border-border hover:border-secondary/50"
@@ -192,7 +192,7 @@ export default function FareCalculatorPage() {
                   <MapPin size={18} className="text-primary flex-shrink-0" />
                   <div>
                     <p className="font-semibold text-foreground">Distance-based</p>
-                    <p className="text-muted-foreground">$2.50 per km base rate</p>
+                    <p className="text-muted-foreground">€2.50 per km base rate</p>
                   </div>
                 </div>
                 <div className="flex gap-3">

@@ -110,7 +110,7 @@ export default function DriverDashboard() {
             </div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-muted">
-                <div className={`w-3 h-3 rounded-full €{isOnline ? "bg-green-500" : "bg-red-500"}`}></div>
+                <div className={`w-3 h-3 rounded-full &{isOnline ? "bg-green-500" : "bg-red-500"}`}></div>
                 <span className="text-sm font-semibold text-foreground">{isOnline ? "Online" : "Offline"}</span>
               </div>
               <Button
@@ -153,7 +153,7 @@ export default function DriverDashboard() {
                     <p className="text-sm text-muted-foreground mb-1">{stat.label}</p>
                     <p className="text-3xl font-bold text-foreground">{stat.value}</p>
                   </div>
-                  <div className={`w-12 h-12 bg-muted rounded-lg flex items-center justify-center €{stat.color}`}>
+                  <div className={`w-12 h-12 bg-muted rounded-lg flex items-center justify-center &{stat.color}`}>
                     <Icon size={24} />
                   </div>
                 </div>

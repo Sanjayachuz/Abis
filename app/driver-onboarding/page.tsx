@@ -73,7 +73,9 @@ export default function DriverOnboardingPage() {
   }, [router])
 
   const handleFileUpload = (docId: string, file: File) => {
-    setDocuments((docs) => docs.map((doc) => (doc.id === docId ? { ...doc, uploaded: true, file } : doc)))
+    setDocuments((docs) =>
+      docs.map((doc) => (doc.id === docId ? { ...doc, uploaded: true, file } : doc))
+    )
   }
 
   const handleBankInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,13 +88,13 @@ export default function DriverOnboardingPage() {
 
   const handleNext = () => {
     if (currentStep < 3) {
-      setCurrentStep(currentStep + 1)
+      setCurrentStep((s) => s + 1)
     }
   }
 
   const handlePrevious = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1)
+      setCurrentStep((s) => s - 1)
     }
   }
 
@@ -134,28 +136,31 @@ export default function DriverOnboardingPage() {
         {/* Progress Indicator */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-4">
-            {progressSteps.map((step, index) => (
-              <div key={index} className="flex items-center">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition &{
-                    currentStep > index
-                      ? "bg-primary text-primary-foreground"
-                      : currentStep === index + 1
+            {progressSteps.map((step, index) => {
+              const stepNumber = index + 1
+              const isCompleted = currentStep > stepNumber
+              const isActive = currentStep === stepNumber
+              return (
+                <div key={index} className="flex items-center">
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold transition ${
+                      isCompleted || isActive
                         ? "bg-primary text-primary-foreground"
                         : "bg-muted text-muted-foreground"
-                  }`}
-                >
-                  {currentStep > index ? "✓" : index + 1}
+                    }`}
+                  >
+                    {isCompleted ? "✓" : stepNumber}
+                  </div>
+                  <p className="ml-2 text-sm font-semibold text-foreground hidden sm:block">{step}</p>
+                  {index < progressSteps.length - 1 && (
+                    <div
+                      className={`h-1 mx-4 transition ${currentStep > stepNumber ? "bg-primary" : "bg-muted"}`}
+                      style={{ width: "60px" }}
+                    ></div>
+                  )}
                 </div>
-                <p className="ml-2 text-sm font-semibold text-foreground hidden sm:block">{step}</p>
-                {index < progressSteps.length - 1 && (
-                  <div
-                    className={`h-1 mx-4 transition &{currentStep > index ? "bg-primary" : "bg-muted"}`}
-                    style={{ width: "60px" }}
-                  ></div>
-                )}
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
 
@@ -165,7 +170,7 @@ export default function DriverOnboardingPage() {
             <div>
               <h2 className="text-2xl font-bold text-foreground mb-2">Upload Required Documents</h2>
               <p className="text-muted-foreground">
-                Upload clear, readable copies of all required documents ({uploadedCount}/6)
+                Upload clear, readable copies of all required documents ({uploadedCount}/{documents.length})
               </p>
             </div>
 
@@ -187,9 +192,12 @@ export default function DriverOnboardingPage() {
                       </div>
                       <p className="text-sm text-muted-foreground ml-6">{doc.description}</p>
                     </div>
-                    <label className="cursor-pointer">
-                      <div
-                        className={`px-4 py-2 rounded-lg transition &{
+
+                    {/* label + file input */}
+                    <div className="flex flex-col items-end gap-2">
+                      <label
+                        htmlFor={`${doc.id}-file`}
+                        className={`inline-flex items-center px-4 py-2 rounded-lg transition cursor-pointer z-10 ${
                           doc.uploaded
                             ? "bg-primary/10 text-primary"
                             : "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -199,8 +207,9 @@ export default function DriverOnboardingPage() {
                           <Upload size={16} />
                           {doc.uploaded ? "Uploaded" : "Upload"}
                         </div>
-                      </div>
+                      </label>
                       <input
+                        id={`${doc.id}-file`}
                         type="file"
                         className="hidden"
                         onChange={(e) => {
@@ -210,7 +219,11 @@ export default function DriverOnboardingPage() {
                         }}
                         accept="image/*,.pdf"
                       />
-                    </label>
+                      {/* show filename or hint */}
+                      <div className="text-xs text-muted-foreground">
+                        {doc.file ? doc.file.name : <span>Accepted: JPG, PNG, PDF</span>}
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -357,7 +370,7 @@ export default function DriverOnboardingPage() {
             Previous
           </Button>
           {currentStep < 3 ? (
-            <Button onClick={handleNext} disabled={currentStep === 1 && uploadedCount < 6} className="flex-1">
+            <Button onClick={handleNext} disabled={currentStep === 1 && uploadedCount < documents.length} className="flex-1">
               Next
               <ChevronRight size={20} className="ml-2" />
             </Button>

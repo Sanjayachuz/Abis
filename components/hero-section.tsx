@@ -36,18 +36,18 @@ function SlideCarousel({ intervalMs = 4000, heightClass = "h-96" }) {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      <div className={`relative €{heightClass} rounded-3xl overflow-hidden`}>
+      <div className={`relative &{heightClass} rounded-3xl overflow-hidden`}>
         {/* sliding track */}
         <div
           ref={trackRef}
           className="absolute inset-0 flex transition-transform duration-700 ease-in-out will-change-transform"
-          style={{ transform: `translateX(-€{index * 100}%)` }}
+          style={{ transform: `translateX(-&{index * 100}%)` }}
         >
           {images.map((src, i) => (
             <div key={i} className="w-full flex-shrink-0 relative">
               <img
                 src={src}
-                alt={`slide-€{i}`}
+                alt={`slide-&{i}`}
                 className="w-full h-full object-cover"
                 draggable={false}
               />
@@ -80,10 +80,10 @@ function SlideCarousel({ intervalMs = 4000, heightClass = "h-96" }) {
             <button
               key={i}
               onClick={() => goTo(i)}
-              className={`w-3 h-3 rounded-full transition-all €{
+              className={`w-3 h-3 rounded-full transition-all &{
                 i === index ? "scale-110 bg-white" : "bg-white/50"
               }`}
-              aria-label={`Go to slide €{i + 1}`}
+              aria-label={`Go to slide &{i + 1}`}
             />
           ))}
         </div>

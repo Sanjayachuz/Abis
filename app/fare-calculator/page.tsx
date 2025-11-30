@@ -87,7 +87,7 @@ export default function FareCalculatorPage() {
                   <button
                     key={type.id}
                     onClick={() => setRideType(type.id as any)}
-                    className={`p-3 rounded-lg border-2 transition text-center ${
+                    className={`p-3 rounded-lg border-2 transition text-center €{
                       rideType === type.id ? "border-primary bg-primary/5" : "border-border hover:border-primary/50"
                     }`}
                   >
@@ -138,7 +138,7 @@ export default function FareCalculatorPage() {
                   {/* Base Fare */}
                   <div className="flex justify-between items-center pb-4 border-b border-border">
                     <span className="text-muted-foreground">Base Fare</span>
-                    <span className="font-semibold text-foreground">${fare.base.toFixed(2)}</span>
+                    <span className="font-semibold text-foreground">€{fare.base.toFixed(2)}</span>
                   </div>
 
                   {/* Ride Type Multiplier */}
@@ -158,14 +158,14 @@ export default function FareCalculatorPage() {
                         <TrendingUp size={16} className="text-secondary" />
                         <span className="text-muted-foreground">Surge Pricing</span>
                       </div>
-                      <span className="font-semibold text-secondary">${fare.surge.toFixed(2)}</span>
+                      <span className="font-semibold text-secondary">€{fare.surge.toFixed(2)}</span>
                     </div>
                   )}
 
                   {/* Total */}
                   <div className="flex justify-between items-center pt-4">
                     <span className="font-bold text-lg text-foreground">Estimated Total</span>
-                    <span className="text-3xl font-bold text-primary">${fare.total.toFixed(2)}</span>
+                    <span className="text-3xl font-bold text-primary">€{fare.total.toFixed(2)}</span>
                   </div>
 
                   <p className="text-xs text-muted-foreground pt-4 border-t border-border">

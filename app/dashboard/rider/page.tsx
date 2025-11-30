@@ -29,8 +29,8 @@ export default function RiderDashboard() {
   }
 
   const recentRides = [
-    { id: 1, destination: "Downtown Station", distance: "5.2 km", fare: "$8.50", time: "2 hours ago", rating: 4.8 },
-    { id: 2, destination: "Airport Terminal", distance: "22 km", fare: "$34.20", time: "1 day ago", rating: 5 },
+    { id: 1, destination: "Downtown Station", distance: "5.2 km", fare: "€8.50", time: "2 hours ago", rating: 4.8 },
+    { id: 2, destination: "Airport Terminal", distance: "22 km", fare: "€34.20", time: "1 day ago", rating: 5 },
   ]
 
   return (
@@ -92,7 +92,7 @@ export default function RiderDashboard() {
             <div className="flex items-start justify-between">
               <div>
                 <p className="text-sm text-muted-foreground mb-1">Total Spent</p>
-                <p className="text-3xl font-bold text-foreground">$287</p>
+                <p className="text-3xl font-bold text-foreground">€287</p>
               </div>
               <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
                 <DollarSign className="text-secondary" size={24} />

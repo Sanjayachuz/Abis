@@ -70,9 +70,7 @@ export default function RiderDashboard() {
           <Button className="h-16 text-lg" asChild>
             <Link href="/ride-booking">Book a Ride Now</Link>
           </Button>
-          <Button variant="outline" className="h-16 text-lg bg-transparent" asChild>
-            <Link href="/schedule-ride">Schedule a Ride</Link>
-          </Button>
+          
         </div>
 
         {/* Stats */}

@@ -179,7 +179,7 @@ export default function RideConfirmationPage() {
                 <p className="text-sm text-muted-foreground">Estimated Fare</p>
                 <p className="font-bold text-foreground flex items-center justify-center gap-1 mt-1">
                   <DollarSign size={16} />
-                  $12.45
+                  €12.45
                 </p>
               </div>
               <div className="w-px bg-border"></div>

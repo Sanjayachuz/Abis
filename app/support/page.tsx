@@ -160,7 +160,7 @@ export default function SupportPage() {
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category as any)}
-                    className={`px-4 py-2 rounded-full text-sm font-semibold transition €{
+                    className={`px-4 py-2 rounded-full text-sm font-semibold transition &{
                       selectedCategory === category
                         ? "bg-primary text-primary-foreground"
                         : "bg-muted text-foreground hover:bg-muted/80"
@@ -185,7 +185,7 @@ export default function SupportPage() {
                       <p className="font-semibold text-foreground text-balance">{faq.question}</p>
                       <ChevronDown
                         size={20}
-                        className={`flex-shrink-0 text-primary transition transform €{
+                        className={`flex-shrink-0 text-primary transition transform &{
                           expandedFAQ === index ? "rotate-180" : ""
                         }`}
                       />
